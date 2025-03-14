@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { globals } from '../globals';
 import filtersReducer from './filtersSlice';
 import { mqttMiddleware } from './mqttMiddleware';
 import mqttReducer from './mqttSlice';
@@ -13,7 +12,9 @@ const rootReducer = combineReducers({
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(mqttMiddleware(globals.hslMqttHost)),
+    getDefaultMiddleware().concat(
+      mqttMiddleware(process.env.HSL_MQTT_HOST as string),
+    ),
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

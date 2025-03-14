@@ -11,7 +11,6 @@ import {
   useMapEvents,
 } from 'react-leaflet';
 
-import { globals } from '../../globals';
 import { useAppDispatch, useAppSelector } from '../../hooks/store';
 import { setUserPosition } from '../../store/filtersSlice';
 import {
@@ -25,6 +24,10 @@ import { HSL_POLYGON } from './area';
 import * as styles from './styles.module.scss';
 
 const HSL_AREA_BOUNDS = L.latLngBounds(HSL_POLYGON);
+const MAP_CONFIG = {
+  hslMapCdn: 'https://cdn.digitransit.fi/map/v3/hsl-map-en/',
+  defaultMapZoom: 12,
+};
 
 const ZoomHandler = ({
   setZoomLevel,
@@ -39,7 +42,7 @@ const ZoomHandler = ({
 
 export const HSLMap = () => {
   const [map, setMap] = useState<Map | null>(null);
-  const [zoomLevel, setZoomLevel] = useState<number>(globals.defaultMapZoom);
+  const [zoomLevel, setZoomLevel] = useState<number>(MAP_CONFIG.defaultMapZoom);
 
   const dispatch = useAppDispatch();
 
@@ -80,7 +83,7 @@ export const HSLMap = () => {
       ref={setMap}
       className={styles.map}
       center={userPosition ?? undefined}
-      zoom={globals.defaultMapZoom}
+      zoom={MAP_CONFIG.defaultMapZoom}
       maxBounds={HSL_AREA_BOUNDS}
       maxBoundsViscosity={1.0}
       wheelDebounceTime={200}
@@ -88,7 +91,7 @@ export const HSLMap = () => {
     >
       <ZoomHandler setZoomLevel={setZoomLevel} />
       <TileLayer
-        url={`${globals.hslMapCdn}{z}/{x}/{y}{r}.png?digitransit-subscription-key=${globals.hslSubscriptionToken}`}
+        url={`${MAP_CONFIG.hslMapCdn}{z}/{x}/{y}{r}.png?digitransit-subscription-key=${process.env.HSL_API_SUBSCRIPTION_TOKEN}`}
         attribution="&copy; Copyright HSL"
       />
       <Polygon
