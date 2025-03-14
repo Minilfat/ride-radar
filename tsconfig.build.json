@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "incremental": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "src",
+    "jsx": "react",
+    "outDir": "./dist",
+    "types": [],
+    "tsBuildInfoFile": "./cache/build/.tsbuildinfo"
+  },
+  "include": ["src/**/*", "src/**/*.json"],
+  "exclude": ["src/**/*.spec.*"]
+}

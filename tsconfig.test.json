@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "composite": true,
+    "incremental": true,
+    "outDir": "./cache/typecheck/test",
+    "types": ["jest", "node"]
+  },
+  "include": ["src/**/*.spec.*", "jest.config.ts"],
+  "references": [{ "path": "./tsconfig.build.json" }]
+}

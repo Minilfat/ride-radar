@@ -1,0 +1,19 @@
+{
+  "display": "Recommended",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "sourceMap": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "exactOptionalPropertyTypes": true,
+    "resolveJsonModule": true,
+    "declarationMap": true,
+    "types": [],
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "$schema": "https://json.schemastore.org/tsconfig"
+}

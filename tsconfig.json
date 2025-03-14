@@ -1,0 +1,22 @@
+{
+  "references": [
+    {
+      "path": "tsconfig.build.json"
+    },
+    {
+      "path": "tsconfig.test.json"
+    }
+  ],
+  "files": [],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "target": "ESNext",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+      "strict": false
+    },
+    "include": ["webpack.config.ts"]
+  }
+}
