@@ -1,20 +1,11 @@
 import path from 'node:path';
 
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration } from 'webpack';
-import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 
-const mode = 'development';
-
-const devServer: DevServerConfiguration = {
-  open: true,
-  host: 'localhost',
-  port: 3000,
-  historyApiFallback: true,
-  hot: true,
-};
+const mode = 'production';
 
 const config: Configuration = {
   mode,
@@ -31,8 +22,8 @@ const config: Configuration = {
       filename: 'index.html',
       title: 'RideRadar',
     }),
-    new ReactRefreshWebpackPlugin(),
-  ].filter(Boolean),
+    new MiniCssExtractPlugin(),
+  ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
@@ -44,7 +35,6 @@ const config: Configuration = {
         use: {
           loader: 'babel-loader',
           options: {
-            plugins: ['react-refresh/babel'],
             presets: ['@babel/preset-react', '@babel/preset-typescript'],
           },
         },
@@ -52,7 +42,7 @@ const config: Configuration = {
       {
         test: /\.module\.scss$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -68,11 +58,11 @@ const config: Configuration = {
       {
         test: /\.scss$/,
         exclude: /\.module\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(ttf|woff|woff2|png|jpg|gif)$/i,
@@ -91,8 +81,7 @@ const config: Configuration = {
       },
     ],
   },
-  devServer,
-  devtool: 'source-map',
+  devtool: false,
   optimization: {
     splitChunks: {
       chunks: 'all',
