@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "22.x",
-    "pnpm": "^10.3.0"
+    "node": "22.x"
   },
   "packageManager": "pnpm@10.3.0",
   "dependencies": {
@@ -66,9 +65,7 @@
     "preinstall": "npx only-allow pnpm",
     "test": "jest --config jest.config.ts",
     "format:check": "prettier --check .",
-    "build": "tsc -b tsconfig.build.json && pnpm copy:assets",
-    "copy:assets": "cp -R ./src/assets/ ./dist/assets/",
-    "bundle": "echo",
+    "bundle": "NODE_ENV=production webpack --config webpack.config.ts",
     "dev": "webpack serve --config webpack.config.ts",
     "typecheck": "tsc -b",
     "lint": "eslint .",
