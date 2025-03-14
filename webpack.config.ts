@@ -31,6 +31,7 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html',
+      title: 'RideRadar',
     }),
     !prodBuild && new ReactRefreshWebpackPlugin(),
     prodBuild && new MiniCssExtractPlugin(),
