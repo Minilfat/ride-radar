@@ -1,0 +1,187 @@
+@use '../../scss/utils' as utils;
+@use '../../scss/colors' as colors;
+
+@mixin labelFonts {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: colors.$text-primary;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: utils.multiply(4);
+  padding: utils.multiply(4);
+  background: colors.$background-color;
+  border-color: colors.$border-color;
+  border-radius: utils.multiply(2);
+  box-shadow: colors.$box-shadow;
+  height: 100%;
+}
+
+.label {
+  display: block;
+  @include labelFonts;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: utils.multiply(1) utils.multiply(2);
+
+  & > .label {
+    margin-bottom: 0;
+  }
+
+  & > input[type='checkbox'] {
+    display: none;
+
+    & + label {
+      @include labelFonts;
+      cursor: pointer;
+      min-width: utils.multiply(8);
+
+      display: flex;
+      align-items: center;
+      position: relative;
+      user-select: none;
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+      }
+
+      &::before {
+        background-color: colors.$switch-off;
+        border-radius: utils.multiply(6);
+        height: utils.multiply(4);
+        width: utils.multiply(7);
+        min-width: utils.multiply(7);
+        margin-right: utils.multiply(2);
+        transition: background-color 0.125s ease-out;
+      }
+
+      &::after {
+        background-color: #fff;
+        height: utils.multiply(3.5);
+        width: utils.multiply(3.5);
+        border-radius: 100%;
+
+        box-shadow:
+          0 3px 1px 0 rgba(37, 34, 71, 0.05),
+          0 2px 2px 0 rgba(37, 34, 71, 0.1),
+          0 3px 3px 0 rgba(37, 34, 71, 0.05);
+
+        position: absolute;
+        transition: transform 0.125s ease-out;
+      }
+    }
+
+    &:checked {
+      & + label::before {
+        background-color: colors.$switch-on;
+      }
+
+      & + label::after {
+        transform: translate3d(10px, 0, 0);
+      }
+    }
+
+    &:disabled {
+      & + label {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.radioGroup {
+  margin-top: utils.multiply(2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.radioLabel {
+  position: relative;
+  cursor: pointer;
+
+  & input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+
+    & + svg {
+      transition: filter 0.3s ease;
+      filter: grayscale(100%) brightness(0.8);
+    }
+
+    &:hover + svg,
+    &:checked + svg,
+    &:focus + svg {
+      filter: grayscale(0);
+    }
+  }
+}
+
+.rangeContainer {
+  display: flex;
+  align-items: center;
+  gap: utils.multiply(2);
+
+  & > input[type='range'] {
+    flex-grow: 1;
+  }
+}
+
+.textInput {
+  margin-top: utils.multiply(1);
+  padding: utils.multiply(1.5) utils.multiply(2);
+  border: 1px solid colors.$input-border;
+  background: colors.$input-background;
+
+  font-size: 14px;
+  border-radius: utils.multiply(2);
+  width: 100%;
+  &:focus {
+    border-color: colors.$input-focus;
+    outline: none;
+  }
+}
+
+.errorLabel {
+  @include labelFonts;
+  color: red;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: colors.$secondary-color;
+}
+
+.totalInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: utils.multiply(2);
+  text-align: center;
+}
+
+.total {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: utils.multiply(1.5) utils.multiply(2);
+  width: max-content;
+  border-radius: utils.multiply(2);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.caption {
+  font-size: 12px;
+  font-style: italic;
+  color: colors.$text-secondary;
+}

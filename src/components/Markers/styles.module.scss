@@ -1,0 +1,37 @@
+@use '../../scss/utils' as utils;
+
+@mixin iconMixin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.icon {
+  &-L > span {
+    @include iconMixin;
+    height: 40px;
+    width: 40px;
+  }
+
+  &-M > span {
+    @include iconMixin;
+    height: 32px;
+    width: 32px;
+  }
+
+  &-S > span {
+    @include iconMixin;
+    height: 16px;
+    width: 16px;
+  }
+
+  &-XS > span {
+    @include iconMixin;
+    height: 8px;
+    width: 8px;
+  }
+}

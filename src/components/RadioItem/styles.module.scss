@@ -1,0 +1,55 @@
+// #radios label {
+//   position: relative;
+// }
+
+// input[type='radio'] {
+//   position: absolute;
+//   opacity: 0;
+// }
+
+// input[type='radio'] + svg {
+//   -webkit-transition: all 0.2s;
+//   transition: all 0.2s;
+// }
+
+// input + svg {
+//   cursor: pointer;
+// }
+
+.radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+
+  & input {
+    display: none; // Hide default radio input
+  }
+
+  &-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #007bff;
+    border-radius: 50%;
+  }
+
+  &-label {
+    font-size: 16px;
+    color: #333;
+  }
+
+  &:hover &-circle {
+    border-color: #0056b3;
+  }
+}

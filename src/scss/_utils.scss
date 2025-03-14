@@ -1,0 +1,10 @@
+$base: 4px;
+
+@function multiply($factor) {
+  @return $base * $factor;
+}
+
+$top-section: multiply(15);
+$map-padding: multiply(4);
+$map-height: calc(100dvh - $top-section - 2 * $map-padding);
+$transition-speed: 0.3s;

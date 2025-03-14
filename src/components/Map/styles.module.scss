@@ -1,0 +1,6 @@
+@use '../../scss/utils' as utils;
+
+.map {
+  width: 100%;
+  height: utils.$map-height;
+}

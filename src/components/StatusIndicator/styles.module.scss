@@ -1,0 +1,41 @@
+@use '../../scss/colors' as colors;
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #a4fba6;
+    animation: blink 1.5s infinite alternate;
+  }
+
+  &.connected {
+    .dot {
+      background-color: #a4fba6;
+    }
+  }
+
+  &.disconnected {
+    .dot {
+      background-color: #ff7f7f;
+    }
+  }
+
+  .caption {
+    font-size: 12px;
+    color: #fff;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
