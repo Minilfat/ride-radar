@@ -7,6 +7,8 @@ import { Configuration } from 'webpack';
 
 const mode = 'production';
 
+console.log(process.env);
+
 const config: Configuration = {
   mode,
   entry: './src/index.tsx',
