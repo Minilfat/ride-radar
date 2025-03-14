@@ -66,8 +66,8 @@
 
       &::after {
         background-color: #fff;
-        height: utils.multiply(3.5);
-        width: utils.multiply(3.5);
+        height: utils.multiply(3);
+        width: utils.multiply(3);
         border-radius: 100%;
 
         box-shadow:
@@ -76,6 +76,7 @@
           0 3px 3px 0 rgba(37, 34, 71, 0.05);
 
         position: absolute;
+        left: 2px;
         transition: transform 0.125s ease-out;
       }
     }
