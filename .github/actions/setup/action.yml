@@ -21,4 +21,4 @@ runs:
     - name: Install dependencies
       shell: bash
       if: inputs.install-dependencies == 'true'
-      run: pnpm install
+      run: pnpm install -r --frozen-lockfile --offline
