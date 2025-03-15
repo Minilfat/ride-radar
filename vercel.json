@@ -1,0 +1,9 @@
+{
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm bundle",
+  "outputDirectory": "dist",
+  "rootDirectory": null,
+  "git": {
+    "deploymentEnabled": false
+  }
+}
