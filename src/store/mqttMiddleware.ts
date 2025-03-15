@@ -82,7 +82,8 @@ export const mqttMiddleware = (
     if (startBufferedUpdates.match(action)) {
       if (!intervalId) {
         intervalId = setInterval(() => {
-          const { userPolygon, route } = store.getState().filters;
+          const { userPolygon, route, transportMode } =
+            store.getState().filters;
           const filteredVps = [...messageBuffer].reduce<VehiclePosition[]>(
             (acc, [, vp]) => {
               if (userPolygon && vp) {
@@ -99,7 +100,11 @@ export const mqttMiddleware = (
                   ? vp.desi.toLowerCase().includes(route.toLowerCase())
                   : true;
 
-                if (isInside && recentlyUpdated && matchesRoute) acc.push(vp);
+                const sameType = transportMode === vp.transportMode;
+
+                if (isInside && recentlyUpdated && matchesRoute && sameType) {
+                  acc.push(vp);
+                }
               }
 
               return acc;
