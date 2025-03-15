@@ -9,6 +9,8 @@ const rootReducer = combineReducers({
   filters: filtersReducer,
 });
 
+console.log('process.env.HSL_MQTT_HOST:', process.env.HSL_MQTT_HOST);
+
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
