@@ -25,7 +25,9 @@ const config: Configuration = {
     publicPath: '/',
   },
   plugins: [
-    new Dotenv(),
+    new Dotenv({
+      path: './.env.local',
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html',

@@ -1,9 +1,8 @@
 import path from 'node:path';
 
-import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { Configuration } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 
 const mode = 'production';
 
@@ -16,7 +15,12 @@ const config: Configuration = {
     publicPath: '/',
   },
   plugins: [
-    new Dotenv(),
+    new DefinePlugin({
+      'process.env.HSL_API_SUBSCRIPTION_TOKEN': JSON.stringify(
+        process.env.HSL_API_SUBSCRIPTION_TOKEN,
+      ),
+      'process.env.HSL_MQTT_HOST': JSON.stringify(process.env.HSL_MQTT_HOST),
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html',
