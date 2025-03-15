@@ -1,0 +1,24 @@
+name: 'Setup'
+description: 'Sets up node, pnpm and install dependencies'
+
+inputs:
+  install-dependencies:
+    description: 'Whether to install dependencies or not'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: pnpm/action-setup@v4
+      with:
+        run_install: false
+    - id: install-node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: '.nvmrc'
+        cache: pnpm
+    - name: Install dependencies
+      shell: bash
+      if: inputs.install-dependencies == 'true'
+      run: pnpm install
