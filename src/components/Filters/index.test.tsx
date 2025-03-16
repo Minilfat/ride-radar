@@ -1,19 +1,10 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
-import {
-  FiltersState,
-  initialState,
-  //   initialState,
-  setRadius,
-  setRoute,
-  setTransportMode,
-  setUseCurrentLocation,
-} from '../../store/filtersSlice';
+import { initialState } from '../../store/filtersSlice';
 import { renderWithProviders } from '../../utils/test-utils';
 import { Filters } from '.';
-import { RootState } from '../../store/configureStore';
 
 describe('Filters Component', () => {
   it('renders correctly', () => {
