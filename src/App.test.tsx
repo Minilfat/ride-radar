@@ -8,7 +8,7 @@ it('renders app', () => {
   renderWithProviders(<App />);
 
   const appName = screen.getByRole('heading', {
-    name: 'RideRadar',
+    name: 'RideRadar asd',
   });
   expect(appName).toBeInTheDocument();
 });
