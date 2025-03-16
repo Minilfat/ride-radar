@@ -1,19 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import React from 'react';
-import { Provider } from 'react-redux';
 
 import App from './App';
-import { rootReducer } from './store/configureStore';
-
-const testStore = configureStore({ reducer: rootReducer });
+import { renderWithProviders } from './utils/test-utils';
 
 it('renders app', () => {
-  render(
-    <Provider store={testStore}>
-      <App />
-    </Provider>,
-  );
+  renderWithProviders(<App />);
 
   const appName = screen.getByRole('heading', {
     name: 'RideRadar',

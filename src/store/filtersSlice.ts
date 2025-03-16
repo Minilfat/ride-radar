@@ -19,7 +19,7 @@ const HelsinkiCenter: LatLngLiteral = {
   lng: 24.9414841,
 };
 
-const initialState: FiltersState = {
+export const initialState: FiltersState = {
   radiusKm: 2,
   transportMode: 'bus',
   route: '',

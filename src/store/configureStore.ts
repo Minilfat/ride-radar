@@ -9,6 +9,13 @@ export const rootReducer = combineReducers({
   filters: filtersReducer,
 });
 
+export function setupStore(preloadedState: Partial<RootState> = {}) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+}
+
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>

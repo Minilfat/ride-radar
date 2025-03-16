@@ -21,10 +21,10 @@ const TRANSPORT_ICON: Record<
   TransportMode,
   React.ReactElement<React.SVGProps<SVGSVGElement>>
 > = {
-  bus: <BusIcon height={40} width={40} />,
-  train: <TrainIcon height={40} width={40} />,
-  metro: <MetroIcon height={40} width={40} />,
-  tram: <TramIcon height={40} width={40} />,
+  bus: <BusIcon aria-hidden="true" height={40} width={40} />,
+  train: <TrainIcon aria-hidden="true" height={40} width={40} />,
+  metro: <MetroIcon aria-hidden="true" height={40} width={40} />,
+  tram: <TramIcon aria-hidden="true" height={40} width={40} />,
 };
 
 export const Filters = () => {
@@ -101,6 +101,7 @@ export const Filters = () => {
                 value={type}
                 checked={transportMode === type}
                 onChange={() => onSelectTransportMode(type)}
+                aria-label={type}
               />
               {TRANSPORT_ICON[type]}
             </label>
@@ -161,7 +162,7 @@ export const Filters = () => {
           checked={!useCurrentLocation}
           onChange={() => onToggleUseLocation()}
         />
-        <label htmlFor="switch">
+        <label htmlFor="switch-map">
           Drag the marker to set a location on the map
         </label>
       </div>
