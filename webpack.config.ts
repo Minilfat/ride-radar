@@ -30,6 +30,7 @@ const config: Configuration = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      favicon: './public/favicon.ico',
       filename: 'index.html',
       title: 'RideRadar',
     }),
