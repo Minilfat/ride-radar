@@ -27,6 +27,12 @@ const config: JestConfigWithTsJest = {
     '<rootDir>/src/setupTests.ts',
   ],
   transformIgnorePatterns: [`node_modules/.pnpm/(?!(${esModules.join('|')})@)`],
+  modulePathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/dist/',
+    '<rootDir>/cache/',
+    '<rootDir>/build/',
+  ],
 };
 
 export default config;
