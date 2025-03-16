@@ -12,6 +12,8 @@ export default tseslint.config(
     ignores: [
       'cache/*',
       'dist/*',
+      '__mocks__/*',
+      '.vercel/*',
       'eslint.config.mjs',
       '.prettierrc',
       'public/**',
