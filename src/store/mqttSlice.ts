@@ -9,7 +9,7 @@ export interface MqttState {
   vehiclesCount: number;
 }
 
-const initialState: MqttState = {
+export const initialState: MqttState = {
   topics: [],
   vehiclePositions: {},
   connectionStatus: 'disconnected',
