@@ -5,8 +5,15 @@
     "composite": true,
     "incremental": true,
     "outDir": "./cache/typecheck/test",
-    "types": ["jest", "node"]
+    "types": ["jest", "node", "@testing-library/jest-dom"]
   },
-  "include": ["src/**/*.spec.*", "jest.config.ts"],
+  "include": [
+    "src/global.d.ts",
+    "src/**/*.test.*",
+    "src/**/*.spec.*",
+    "src/setupTests.ts",
+    "jest.setup.ts",
+    "jest.config.ts"
+  ],
   "references": [{ "path": "./tsconfig.build.json" }]
 }

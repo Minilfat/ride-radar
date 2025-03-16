@@ -4,7 +4,7 @@ import filtersReducer from './filtersSlice';
 import { mqttMiddleware } from './mqttMiddleware';
 import mqttReducer from './mqttSlice';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   mqtt: mqttReducer,
   filters: filtersReducer,
 });

@@ -7,10 +7,10 @@
     "allowSyntheticDefaultImports": true,
     "rootDir": "src",
     "jsx": "react",
-    "outDir": "./dist",
+    "outDir": "./build",
     "types": [],
     "tsBuildInfoFile": "./cache/build/.tsbuildinfo"
   },
   "include": ["src/**/*", "src/**/*.json"],
-  "exclude": ["src/**/*.spec.*"]
+  "exclude": ["src/**/*.spec.*", "src/**/*.test.*", "src/setupTests.ts"]
 }
