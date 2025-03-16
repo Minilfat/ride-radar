@@ -7,12 +7,6 @@ on:
   pull_request:
 
 jobs:
-  log-info:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print github info
-        run: echo "Branch - ${{ github.ref }}"
-
   lint:
     name: Lint Code
     runs-on: ubuntu-latest
@@ -46,8 +40,19 @@ jobs:
       - name: Run Typecheck
         run: pnpm typecheck
 
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Run Tests
+        run: pnpm test
+
   deploy-preview:
-    needs: [lint, format, typecheck]
+    needs: [lint, format, typecheck, test]
     if: ${{ github.ref != 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
@@ -88,14 +93,3 @@ jobs:
 
       - name: Deploy to Vercel Production
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-  # test:
-  #   name: Run Tests
-  #   runs-on: ubuntu-latest
-  #   needs: setup
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4
-
-  #     - name: Run Tests
-  #       run: pnpm test
