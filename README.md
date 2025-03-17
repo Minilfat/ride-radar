@@ -70,4 +70,6 @@ Although the application provides a functional real-time vehicle position tracki
 
 - Utilizing Topics with Geohash. The current method filters data on the frontend, but this could be optimized by utilizing geohash-based topics. However, the custom geohash format used in the API is custom andlacking any documentation, making this challenging to implement.
 
+- Responsiveness
+
 - Increase testing coverage :)
