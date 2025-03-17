@@ -17,6 +17,21 @@ The application utilizes the following two APIs to gather data:
 2. **Background Map API**  
    [DigiTransit Background Map API](https://digitransit.fi/en/developers/apis/4-map-api/background-map/)
 
+## Real-Time Communication with MQTT.js
+
+Ride Radar receives real-time data via WebSockets using the **MQTT.js** client.
+
+- The app subscribes to MQTT topics to receive vehicle positioning data efficiently.
+- incoming messages are batched, and state updates occur at intervals.
+
+## CI/CD Setup
+
+The project is set up with GitHub Actions for continuous integration and deployment.
+
+- Automated tests, linting, format-checking and typechecking run on every push and pull request
+- pull requests are deployed into Vercel's preview env
+- push to main branch triggers production deploy
+
 ## Getting Started
 
 To get started with this project locally, follow the instructions below:
